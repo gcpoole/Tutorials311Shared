@@ -12,6 +12,15 @@ description: "An R learning lab exploring probablity distributions associated wi
 
 
 
+
+
+
+
+
+
+
+
+
 ```{r setup, include=FALSE}
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)

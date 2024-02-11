@@ -12,6 +12,15 @@ description: "An R learning lab exploring the Palmer Penguines data set.  In thi
 
 
 
+
+
+
+
+
+
+
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(learnr)
@@ -191,6 +200,29 @@ Therefore, if this table have been derived from the `penguins` data, we would co
 We could also read it the other way, concluding Gentoo penguins inhabit Torgersen and Dream Islands, Adelie penguins are on Biscoe and Dream Islands, and Chinstraps are limited to Biscoe Island.
 
 Let's make a table like this, but using the actual data in the `penguins` data frame!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Who's where?
