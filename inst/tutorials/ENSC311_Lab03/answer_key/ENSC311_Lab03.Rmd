@@ -10,6 +10,12 @@ description: "An R learning lab exploring probablity distributions associated wi
 ---
 
 <!-- 
+Lecture topics:
+  creating a function.
+  making a graph in base R.
+--->
+
+<!-- 
 ### SO IMPORTANT ######################################################
 To create a new tutorial, use:
 

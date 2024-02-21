@@ -156,7 +156,7 @@ grade_code()
 
 ## Answering questions with data
 
-Now that we have a sense of what's in the data set, some questions may come to mind.  For instance, I wonder if the individual species are segregated on specific islands?  Or, are the species are distributed across multiple islands?  Let's try to find out!
+Now that we have a sense of what's in the data set, some questions may come to mind.  For instance, I wonder if the individual species are segregated on specific islands?  Or, if the species are distributed across multiple islands?  Let's try to find out!
 
 Before we start writing R code, let's take a moment and try to think -- conceptually -- about what an answer to this question would look like, so we know here we are headed with our analysis.  In other words, without thinking about R for a moment, try to imagine the characteristics of a data table that would answer the question "*Which species are on which islands?*"
 
@@ -339,7 +339,7 @@ Huh.  There's a pattern there fore sure, but a lot of variability.  I wonder if 
 
 To do that, first we have to understand what color names are available in R.  There are a lot.  R has 657 build-in color names!  There are other ways to generate colors too, but we'll start with the built-in names.
 
-Search the internet for a description of the built-in color name in R.
+Search the internet for a description of the built-in color names in R.
 
 ```{r color_quiz} 
 quiz(
@@ -377,7 +377,7 @@ OK, it's an integer vector.  Assigning colors is easier if we are working with a
 Remember, tho, if we want to alter a data set from a package, we have to make a local copy using the `data()` function.  So:
 
 - Call the `data()` function to make a local copy of the `penguins` data set so you can alter it.
-- Convert the `years` column to a factor.
+- Convert the `year` column to a factor.
 - Display the levels of the new factor.
 
 ```{r create_years_factor, exercise=TRUE, exercise.setup = "pre_penguin"}
@@ -394,6 +394,11 @@ grade_code()
 ```
 
 Since a factor assigns an integer value, starting at one, to each unique value in the original vector, the `levels()` of the `penguine$year` factor tells us that, in the `penguins$year` factor, 2007 is 1, 2008 = 2, and 2009 = 3. Check it out:
+
+```{r}
+data("penguins")
+penguins$year <- factor(penguins$year)
+```
 
 ```{r echo = TRUE}
 data.frame(
