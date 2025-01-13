@@ -27,8 +27,15 @@ library(learnr)
 library(palmerpenguins)
 library(ENSC311)
 gradethis::gradethis_setup()
-options(tutorial.event_recorder = tutorialize::recorder)
+options(tutorial.event_recorder = tutorialize::mongo_recorder)
 options(tutorial.storage = learnr::filesystem_storage(file.path(path.expand("~"), "_learnr_storage_")))
+
+events_collection <- 
+  titles_collection <- mongolite::mongo(
+    db = "tutorial",
+    collection = "events",
+    url = Sys.getenv("MONGO_ENSC311-STUDENT") )
+
 
 ```
 
@@ -410,8 +417,8 @@ data.frame(
 So if in the factor "2007" is always 1, "2008" is always 2, and "2009" is always 3, then ponder the following code:
 
 ```{r, echo=TRUE, eval=FALSE}
-island_colors <- c("red", "gold", "blue")
-island_colors[penguins$year]
+year_colors <- c("red", "gold", "blue")
+year_colors[penguins$year]
 ```
 
 ```{r island_color_quiz} 
@@ -426,20 +433,20 @@ quiz(
 
 ### Plot by year
 
-OK, so we have a way to make a color vector that can be used for the new colomn in the `penguins` data set.  
+OK, so we have a way to make a color vector that can be used for the new column in the `penguins` data set.  
 
-- using the `island_colors` vector created above, add a `plot_color` column that has "red" for Biscoe Island, "gold" for Dream Island, and "blue" for Torgersen Island'  
+- using the `year_colors` vector created above, add a `plot_color` column that has "red" for Biscoe Island, "gold" for Dream Island, and "blue" for Torgersen Island'  
 - remake the prior plot, but passing the parameter `col = penguins$plot_color`
 
-I've included the `island_color` vector for you.  Add your code *below* the provided code.
+I've included the `year_color` vector for you.  Add your code *below* the provided code.
 ```{r plot_flipper_bill_by_year, exercise=TRUE, exercise.setup = "pre_year_colors"}
 # leave the next line first; add code below the next line
-island_colors <- c("red", "gold", "blue")
+year_colors <- c("red", "gold", "blue")
 
 ```
 
 ```{r plot_flipper_bill_by_year-solution}
-island_colors <- c("red", "gold", "blue")
+year_colors <- c("red", "gold", "blue")
 data("penguins")
 penguins$plot_color <- island_colors[penguins$year]
 plot(
@@ -452,10 +459,6 @@ plot(
 grade_code()
 ```
 
-```{r, echo = TRUE}
-
-```
-
 Hmmmmm...  `Year` doesn't seem to have much to do with the pattern.  All the years seem to overlap quite a bit.
 
 ## Integration
@@ -464,7 +467,7 @@ Let's do a little more exploration to see what's going on.  There won't be any m
 
 ### Is the `plot_color` vector correct?
 
-First, let's double check that we've got the right colors in the `plot_colors` column right!  Create a summary table that shows there is only one `plot_color` associated with each `year`.
+First, let's double check that we've got the colors in the `plot_colors` column right!  Create a summary table that shows there is only one `plot_color` associated with each `year`.
 
 ```{r colors_correct, exercise=TRUE, exercise.setup = "pre_year_colors"}
 
@@ -492,6 +495,7 @@ grade_this( {
 ```
 
 ```{r plot_flipper_bill_by_island-solution, exercise.reveal_solution=FALSE}
+island_colors = c("red", "gold", "blue")
 penguins$plot_color <- island_colors[penguins$island]
 dplyr::distinct(penguins[, c("island", "plot_color")])
 plot(
@@ -527,8 +531,8 @@ Let's Repeat the last question, but make the colors represent different species.
 ```
 
 ```{r plot_flipper_bill_by_species-solution, exercise.reveal_solution=FALSE}
-island_colors <- c("gold", "blue", "red")
-penguins$plot_color <- island_colors[penguins$species]
+species_colors <- c("gold", "blue", "red")
+penguins$plot_color <- species_colors[penguins$species]
 dplyr::distinct(penguins[, c("species", "plot_color")])
 plot(
   penguins$flipper_length_mm,
