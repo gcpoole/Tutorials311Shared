@@ -30,12 +30,11 @@ gradethis::gradethis_setup()
 options(tutorial.event_recorder = tutorialize::mongo_recorder)
 options(tutorial.storage = learnr::filesystem_storage(file.path(path.expand("~"), "_learnr_storage_")))
 
-events_collection <- 
-  titles_collection <- mongolite::mongo(
+options(tutorial.events_collection = 
+  mongolite::mongo(
     db = "tutorial",
     collection = "events",
-    url = Sys.getenv("MONGO_ENSC311-STUDENT") )
-
+    url = persistR::getPersistent("db_key", "~/R/persistR")))
 
 ```
 

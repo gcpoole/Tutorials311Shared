@@ -30,8 +30,14 @@ usethis::use_tutorial(
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 gradethis::gradethis_setup()
-options(tutorial.event_recorder = tutorialize::recorder)
+options(tutorial.event_recorder = tutorialize::mongo_recorder)
 options(tutorial.storage = learnr::filesystem_storage(file.path(path.expand("~"), "_learnr_storage_")))
+
+options(tutorial.events_collection = 
+  mongolite::mongo(
+    db = "tutorial",
+    collection = "events",
+    url = persistR::getPersistent("db_key", "~/R/persistR")))
 
 ```
 
