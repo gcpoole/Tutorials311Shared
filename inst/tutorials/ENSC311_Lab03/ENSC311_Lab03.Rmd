@@ -126,18 +126,18 @@ Use the `sample()` function to simulate rolling a die.  Enter `?sample` in the c
 - Run the code multiple times.  How many rolls will it take you to get a 1?  How about a 6?
 
 
-```{r cast_a_die, exercise=TRUE}
+```{r 01_cast_a_die, exercise=TRUE}
 
 ```
 
-```{r cast_a_die-solution}
+```{r 01_cast_a_die-solution}
 six_sided <- 1:6
 six_sided
 single_roll <- sample(six_sided, 1)
 single_roll
 ```
 
-```{r cast_a_die-code-check}
+```{r 01_cast_a_die-code-check}
 grade_code()
 ```
 
@@ -171,16 +171,16 @@ Try making this histogram yourself, using `rnorm(n)` (which generates a vector o
 - Use `rnorm(n)` to generate `n = 10000` random draws from a normal distribution; assign the result to `normal_draw`.
 - Pass `normal_draw` to `hist()` to create the histogram.
 
-```{r basic_histogram, exercise=TRUE}
+```{r 02_basic_histogram, exercise=TRUE}
 
 ```
 
-```{r basic_histogram-solution}
+```{r 02_basic_histogram-solution}
 normal_draw <- rnorm(10000)
 hist(normal_draw)
 ```
 
-```{r basic_histogram-code-check}
+```{r 02_basic_histogram-code-check}
 grade_code()
 ```
 
@@ -200,11 +200,11 @@ Let's use the `sample()` function to simulate rolling a die 50 times! Then, we c
 
 HINT: If you are getting an unexpected error, you might need to enter `?sample` in the console and read about the `replace` parameter.  (Then again, it could also be something else...)
 
-```{r roll_the_dice_50, exercise=TRUE}
+```{r 03_roll_the_dice_50, exercise=TRUE}
 
 ```
 
-```{r roll_the_dice_50-solution}
+```{r 03_roll_the_dice_50-solution}
 # Solution...
 twelve_sided <- 1:12
 many_rolls <- sample(
@@ -214,7 +214,7 @@ many_rolls <- sample(
 hist(many_rolls)
 ```
 
-```{r roll_the_dice_50-code-check}
+```{r 03_roll_the_dice_50-code-check}
 grade_code()
 ```
 
@@ -233,11 +233,11 @@ In the sandbox below...
 - Copy your code from the prior exercise and paste it below.
 - Use `seq()` to create this sequence of break values described above and pass that sequence to the appropriate `breaks` parameter in `hist()`.
 
-```{r roll_the_dice_50_breaks, exercise=TRUE}
+```{r 04_roll_the_dice_50_breaks, exercise=TRUE}
 
 ```
 
-```{r roll_the_dice_50_breaks-solution}
+```{r 04_roll_the_dice_50_breaks-solution}
 twelve_sided <- 1:12
 many_rolls <- sample(
   twelve_sided, 
@@ -249,7 +249,7 @@ hist(
 
 ```
 
-```{r roll_the_dice_50_breaks-code-check}
+```{r 04_roll_the_dice_50_breaks-code-check}
 grade_code()
 ```
 
@@ -260,11 +260,11 @@ grade_code()
 - Modify your code so that it simulates rolling the dice 100,000 times!
 - Run the code a few times to see how the histogram responds with each new set of 100,000 rolls.
 
-```{r roll_the_dice_10000, exercise=TRUE}
+```{r 05_roll_the_dice_10000, exercise=TRUE}
 
 ```
 
-```{r roll_the_dice_10000-solution}
+```{r 05_roll_the_dice_10000-solution}
 twelve_sided <- 1:12
 many_rolls <- sample(
   twelve_sided, 
@@ -275,7 +275,7 @@ hist(
   breaks = seq(0.5, 12.5, 1))
 ```
 
-```{r roll_the_dice_10000-code-check}
+```{r 05_roll_the_dice_10000-code-check}
 grade_code()
 ```
 
@@ -289,7 +289,7 @@ Nice work!
 
 
 
-```{r histogram_behavior}
+```{r 06_histogram_behavior}
 quiz(
   # question_text(
   #   "How did the behavior of the estimated probablity distribution change when you rolled more dice?  How do you explain the change?",
@@ -329,7 +329,7 @@ The function just described has been created for you below. The code between `{`
 
 Also, take a little time to consider `function(a, b)` in the first line.  Notice how the parameters required by the new function are defined simply by including their names in the parenthesis after `function()`.
 
-```{r hypotenuse, exercise=TRUE}
+```{r 07_hypotenuse, exercise=TRUE}
 hypotenuse <- function(a, b) {
   c <- sqrt(a^3 + b^3)
  return(c)
@@ -338,7 +338,7 @@ hypotenuse <- function(a, b) {
 hypotenuse(a = ____, b = ____)
 ```
 
-```{r hypotenuse-solution}
+```{r 07_hypotenuse-solution}
 hypotenuse <- function(a, b) {
   c <- sqrt(a^2 + b^2)
   return(c)
@@ -347,7 +347,7 @@ hypotenuse <- function(a, b) {
 hypotenuse(a = 3, b = 4)
 ```
 
-```{r hypotenuse-code-check}
+```{r 07_hypotenuse-code-check}
 grade_code()
 ```
 
@@ -366,16 +366,16 @@ Within the function:
 - assigns the value to the name `rolls`
 - return the value in `rolls`.
 
-```{r roll_die, exercise=TRUE}
+```{r 08_roll_die, exercise=TRUE}
 roll_die <- function(n, sides = 6) {
   
 }
 
 # test your function with this line of code
-roll_die(n = 5)
+roll_die(n = 20)
 ```
 
-```{r roll_die-solution}
+```{r 08_roll_die-solution}
 roll_die <- function(n, sides = 6) {
   side_values <- 1:sides
   rolls <- sample(side_values, n, replace = TRUE)
@@ -386,7 +386,7 @@ roll_die <- function(n, sides = 6) {
 roll_die(n = 20)
 ```
 
-```{r roll_die-code-check}
+```{r 08_roll_die-code-check}
 grade_code()
 ```
 
@@ -395,7 +395,7 @@ grade_code()
 
 Now use `roll_die` to roll a 20-sided die 15 times.
 
-```{r twenty_sided-setup}
+```{r 09_twenty_sided-setup}
 roll_die <- function(n, sides = 6) {
     side_values <- 1:sides
     rolls <- sample(side_values, n, replace = TRUE)
@@ -403,15 +403,15 @@ roll_die <- function(n, sides = 6) {
 }
 ```
 
-```{r twenty_sided, exercise=TRUE}
+```{r 09_twenty_sided, exercise=TRUE}
 
 ```
 
-```{r twenty_sided-solution}
+```{r 09_twenty_sided-solution}
 roll_die(n = 15, sides = 20)
 ```
 
-```{r twenty_sided-code-check}
+```{r 09_twenty_sided-code-check}
 grade_code()
 ```
 
@@ -426,13 +426,13 @@ Notice in the code below that you will have to define the parameters and default
 The function should:
 
 - Have a default value of `c(6,6)` for `sides` (indicating that the function will roll two 6-sided dice by default).
-- Sum the results of two calls to `roll_die()`.  The first call should be with `sides = sides[1]` and the second call with `sides = sides[2]`. (In your code, try summing these results of the `roll_dice()` functions directly, rather than assigning the results to names and using the names in the sum).  
+- Sum the results of two calls to `roll_die()`.  The first call should be with `sides = sides[1]` and the second call with `sides = sides[2]`. (In your code, try summing the results of the two `roll_die()` functions directly, rather than assigning the results to names).  
 - Assign the summed results to the name `rolls`
 - return the value in `rolls`.
 
 Then, test your function by running the last line of code (below) several times.
 
-```{r roll_two_dice-setup}
+```{r 10_roll_two_dice-setup}
 roll_die <- function(n, sides = 6) {
     side_values <- 1:sides
     rolls <- sample(side_values, n, replace = TRUE)
@@ -440,7 +440,7 @@ roll_die <- function(n, sides = 6) {
 }
 ```
 
-```{r roll_two_dice, exercise=TRUE}
+```{r 10_roll_two_dice, exercise=TRUE}
 roll_two_dice <- function(____) {
   
 }
@@ -449,9 +449,9 @@ roll_two_dice <- function(____) {
 roll_two_dice(n = 10)
 ```
 
-```{r roll_two_dice-solution}
+```{r 10_roll_two_dice-solution}
 roll_two_dice <- function(n, sides = c(6,6)) {
-  rolls <- roll_die(n, sides[1]) + roll_die(n, sides[2])
+  rolls <- roll_die(n, sides = sides[1]) + roll_die(n, sides = sides[2])
   return(rolls)
 }
 
@@ -459,7 +459,7 @@ roll_two_dice <- function(n, sides = c(6,6)) {
 roll_two_dice(n = 10)
 ```
 
-```{r roll_two_dice-code-check}
+```{r 10_roll_two_dice-code-check}
 grade_code()
 ```
 
@@ -486,26 +486,26 @@ If you think about the examples above, there is a formula for calculating the br
 - Subtract 0.5 from the lowest value and add 0.5 to the highest value.
 - Make a sequence between the resulting values with an interval of one.
 
-OK, then!  That's not too hard!  I've started you off with some code, below.  In the code:  
+OK, then!  That's not too hard!  There's some starter code, below.  In the code:  
 
 - Note that `range(x)` returns a vector of length 2 containing the lowest and highest values found in `x`.  In other words, `range(1:6)` will return the equivalent of `c(1,6)`.
 - Fill in the blanks in the `seq()` function and run the code.  Look carefully at the output.  Is it right?
 - If not, think about what kind of error in the code might cause the output you get.
 - Find and fix any errors until the the function returns the correct breaks for both cases (the last two lines provided at the bottom of the code).
 
-```{r breaks_function-setup}
+```{r 11_breaks_function-setup}
 roll_die <- function(n, sides = 6) {
     side_values <- 1:sides
     rolls <- sample(side_values, n, replace = TRUE)
     return(rolls)
 }
 roll_two_dice <- function(n, sides = c(6, 6)) {
-    rolls <- roll_die(n, sides[1]) + roll_die(n, sides[2])
+    rolls <- roll_die(n, sides = sides[1]) + roll_die(n, sides = sides[2])
     return(rolls)
 }
 ```
 
-```{r breaks_function, exercise=TRUE}
+```{r 11_breaks_function, exercise=TRUE}
 pretty_breaks <- function(x) {
  # Notice how I implemented the subtraction and addition to 
  # the range! I used vector arithmetic to add a negative 
@@ -520,11 +520,11 @@ pretty_breaks(1:6)
 pretty_breaks(2:12)
 ```
 
-```{r breaks_function-solution}
+```{r 11_breaks_function-solution}
 pretty_breaks <- function(x) {
   # Notice how I implemented the subtraction and addition to 
-  # the range! I used vector arithmetic to add a negative 
-  # and a positive value to the result from `range(x)`
+  # the range... I used vector arithmetic to add a negative 
+  # and a positive value to the result from `range(x)`!
   break_range <- range(x) + c(-0.5, 0.5)
   breaks <- seq(break_range[1], break_range[2], 1)
   return(breaks)
@@ -535,7 +535,7 @@ pretty_breaks(1:6)
 pretty_breaks(2:12)
 ```
 
-```{r breaks_function-code-check}
+```{r 11_breaks_function-code-check}
 grade_code()
 ```
 
@@ -547,14 +547,14 @@ Now that we can easily generate the `breaks` to make lovely histograms, lets loo
 - Make a histogram of `rolls`; use `breaks = pretty_breaks(rolls)` when you call the `hist()` function
 - Run your code several times before submitting it and see what happens to your estimate of the PD for rolling two dice.
 
-```{r hist_of_two_dice_50-setup}
+```{r 12_hist_of_two_dice_50-setup}
 roll_die <- function(n, sides = 6) {
     side_values <- 1:sides
     rolls <- sample(side_values, n, replace = TRUE)
     return(rolls)
 }
 roll_two_dice <- function(n, sides = c(6, 6)) {
-    rolls <- roll_die(n, sides[1]) + roll_die(n, sides[2])
+    rolls <- roll_die(n, sides = sides[1]) + roll_die(n, sides = sides[2])
     return(rolls)
 }
 pretty_breaks <- function(x) {
@@ -564,16 +564,16 @@ pretty_breaks <- function(x) {
 }
 ```
 
-```{r hist_of_two_dice_50, exercise=TRUE}
+```{r 12_hist_of_two_dice_50, exercise=TRUE}
 
 ```
 
-```{r hist_of_two_dice_50-solution}
+```{r 12_hist_of_two_dice_50-solution}
 rolls <- roll_two_dice(50)
 hist(rolls, breaks = pretty_breaks(rolls))
 ```
 
-```{r hist_of_two_dice_50-code-check}
+```{r 12_hist_of_two_dice_50-code-check}
 grade_code()
 ```
 
@@ -583,14 +583,14 @@ Copy all of your code from the prior exercise and paste it below.  Change the co
 
 Run the code a few times and see how the estimate of the PD changes for every set of 100,000 rolls of the dice.
 
-```{r hist_of_two_dice_100K-setup}
+```{r 13_hist_of_two_dice_100K-setup}
 roll_die <- function(n, sides = 6) {
     side_values <- 1:sides
     rolls <- sample(side_values, n, replace = TRUE)
     return(rolls)
 }
 roll_two_dice <- function(n, sides = c(6, 6)) {
-    rolls <- roll_die(n, sides[1]) + roll_die(n, sides[2])
+    rolls <- roll_die(n, sides = sides[1]) + roll_die(n, sides = sides[2])
     return(rolls)
 }
 pretty_breaks <- function(x) {
@@ -600,21 +600,21 @@ pretty_breaks <- function(x) {
 }
 ```
 
-```{r hist_of_two_dice_100K, exercise=TRUE}
+```{r 13_hist_of_two_dice_100K, exercise=TRUE}
 
 ```
 
-```{r hist_of_two_dice_100K-solution}
+```{r 13_hist_of_two_dice_100K-solution}
 rolls <- roll_two_dice(100000)
 hist(rolls, breaks = pretty_breaks(rolls))
 ```
 
-```{r hist_of_two_dice_100K-code-check}
+```{r 13_hist_of_two_dice_100K-code-check}
 grade_code()
 ```
 
 
-```{r prob_dist_pair_of_dice_quiz}
+```{r 14_prob_dist_pair_of_dice_quiz}
 quiz(
   question("The shape of the probability distribution associated with rolling a pair of dice is closest to which of the following?",
     answer("normal distribution", correct = TRUE),
@@ -672,14 +672,14 @@ In the sandbox below, use `rep()` to:
 - Create a vector containing *each value* in `1:6` repeated six times, followed by the next value; assign the vector to `die2`
 - Display `die2`
 
-```{r permutations-setup}
+```{r 15_permutations-setup}
 roll_die <- function(n, sides = 6) {
     side_values <- 1:sides
     rolls <- sample(side_values, n, replace = TRUE)
     return(rolls)
 }
 roll_two_dice <- function(n, sides = c(6, 6)) {
-    rolls <- roll_die(n, sides[1]) + roll_die(n, sides[2])
+    rolls <- roll_die(n, sides = sides[1]) + roll_die(n, sides = sides[2])
     return(rolls)
 }
 pretty_breaks <- function(x) {
@@ -689,18 +689,18 @@ pretty_breaks <- function(x) {
 }
 ```
 
-```{r permutations, exercise=TRUE}
+```{r 15_permutations, exercise=TRUE}
 
 ```
 
-```{r permutations-solution}
+```{r 15_permutations-solution}
 die1 <- rep(1:6, 6)
 die1
 die2 <- rep(1:6, each = 6)
 die2
 ```
 
-```{r permutations-code-check}
+```{r 15_permutations-code-check}
 grade_code()
 ```
 
@@ -710,14 +710,14 @@ Now that we have the values from `die1` and `die2` in two vectors, we can get th
 - Add `die1` and `die2` together to get the summed value for each permutation of the dice; assign the result to `dice_values`
 - Display `dice_values`
 
-```{r sum_the_permutations-setup}
+```{r 16_sum_the_permutations-setup}
 roll_die <- function(n, sides = 6) {
     side_values <- 1:sides
     rolls <- sample(side_values, n, replace = TRUE)
     return(rolls)
 }
 roll_two_dice <- function(n, sides = c(6, 6)) {
-    rolls <- roll_die(n, sides[1]) + roll_die(n, sides[2])
+    rolls <- roll_die(n, sides = sides[1]) + roll_die(n, sides = sides[2])
     return(rolls)
 }
 pretty_breaks <- function(x) {
@@ -729,16 +729,16 @@ die1 <- rep(1:6, 6)
 die2 <- rep(1:6, each = 6)
 ```
 
-```{r sum_the_permutations, exercise=TRUE}
+```{r 16_sum_the_permutations, exercise=TRUE}
 
 ```
 
-```{r sum_the_permutations-solution}
+```{r 16_sum_the_permutations-solution}
 dice_values <- die1 + die2
 dice_values
 ```
 
-```{r sum_the_permutations-code-check}
+```{r 16_sum_the_permutations-code-check}
 grade_code()
 ```
 
@@ -746,14 +746,14 @@ Look at dice values.  What you notice about the frequency of different numbers? 
 
 - Pass `dice_values` to the `sort()` function
 
-```{r sort_permutations-setup}
+```{r 17_sort_permutations-setup}
 roll_die <- function(n, sides = 6) {
     side_values <- 1:sides
     rolls <- sample(side_values, n, replace = TRUE)
     return(rolls)
 }
 roll_two_dice <- function(n, sides = c(6, 6)) {
-    rolls <- roll_die(n, sides[1]) + roll_die(n, sides[2])
+    rolls <- roll_die(n, sides = sides[1]) + roll_die(n, sides = sides[2])
     return(rolls)
 }
 pretty_breaks <- function(x) {
@@ -766,15 +766,15 @@ die2 <- rep(1:6, each = 6)
 dice_values <- die1 + die2
 ```
 
-```{r sort_permutations, exercise=TRUE}
+```{r 17_sort_permutations, exercise=TRUE}
 
 ```
 
-```{r sort_permutations-solution}
+```{r 17_sort_permutations-solution}
 sort(dice_values)
 ```
 
-```{r sort_permutations-code-check}
+```{r 17_sort_permutations-code-check}
 grade_code()
 ```
 
@@ -787,14 +787,14 @@ Finally, make a histogram of `dice_values`
 - Pass `dice_values` to the `hist()` function.
 - Be sure to include `breaks = pretty_breaks(dice_values)` to set the break points!
 
-```{r hist_permutations-setup}
+```{r 18_hist_permutations-setup}
 roll_die <- function(n, sides = 6) {
     side_values <- 1:sides
     rolls <- sample(side_values, n, replace = TRUE)
     return(rolls)
 }
 roll_two_dice <- function(n, sides = c(6, 6)) {
-    rolls <- roll_die(n, sides[1]) + roll_die(n, sides[2])
+    rolls <- roll_die(n, sides = sides[1]) + roll_die(n, sides = sides[2])
     return(rolls)
 }
 pretty_breaks <- function(x) {
@@ -807,23 +807,23 @@ die2 <- rep(1:6, each = 6)
 dice_values <- die1 + die2
 ```
 
-```{r hist_permutations, exercise=TRUE}
+```{r 18_hist_permutations, exercise=TRUE}
 
 ```
 
-```{r hist_permutations-solution}
+```{r 18_hist_permutations-solution}
 hist(
   dice_values,
   breaks = pretty_breaks(dice_values))
 ```
 
-```{r hist_permutations-code-check}
+```{r 18_hist_permutations-code-check}
 grade_code()
 ```
 
 Does the graph look familiar?  
 
-Huh.  Apparently, the underlying probability distribution for rolling dice is the distribution of total scores that arise from the different permutations of the dice!  That's cool.  Sort makes sense, doesn't it?
+Huh.  Apparently, the underlying probability distribution for rolling dice is the distribution of total scores that arise from the different permutations of the dice!  That's cool.  Sort of makes sense, doesn't it?
 
 ### Let's check and see if we are right.
 
@@ -834,17 +834,17 @@ Let's simulate 100000 rolls of a 4-sided die and a 10-sided die.
 - Use `roll_two_dice()` to perform the simulation.
 - Create a histogram of `rolls`; don't forget to make the breaks pretty!
 
-```{r hist_4_10_permutations, exercise=TRUE, exercise.setup = "hist_of_two_dice_50-setup"}
+```{r 19_hist_4_10_permutations, exercise=TRUE, exercise.setup = "12_hist_of_two_dice_50-setup"}
 
 ```
 
-```{r hist_4_10_permutations-solution, exercise.reveal_solution=FALSE}
+```{r 19_hist_4_10_permutations-solution, exercise.reveal_solution=FALSE}
 rolls <- roll_two_dice(100000, c(4,10))
 hist(rolls, pretty_breaks(rolls))
 ```
 
 
-```{r hist_4_10_permutations-check}
+```{r 19_hist_4_10_permutations-check}
 grade_this( {
   pass_if(
     TRUE, 
@@ -864,17 +864,17 @@ matrix(
 
 Using the table above as a guide, calculate the permutation vectors for the `die1` and `die2`, sum them, then make a histogram of the results (with pretty breaks, of course!)
 
-```{r hist_4_10_PD, exercise=TRUE, exercise.setup = "hist_of_two_dice_50-setup"}
+```{r 20_hist_4_10_PD, exercise=TRUE, exercise.setup = "12_hist_of_two_dice_50-setup"}
 
 ```
 
-```{r hist_4_10_PD-solution, exercise.reveal_solution=FALSE}
+```{r 20_hist_4_10_PD-solution, exercise.reveal_solution=FALSE}
 dice_values <- rep(1:4, 10) + rep(1:10, each = 4)
 hist(dice_values, pretty_breaks(dice_values))
 ```
 
 
-```{r hist_4_10_PD-check}
+```{r 20_hist_4_10_PD-check}
 grade_this( {
   pass_if(
     TRUE, 
@@ -883,4 +883,4 @@ grade_this( {
 
 ### Right on!
 
-Nice work.  You are done with Lab 3!  Be sure to turn it in using `ENSC311::submit_ENSC311()`
+Nice work.  You are done with Lab 3!

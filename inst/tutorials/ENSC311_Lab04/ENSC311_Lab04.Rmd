@@ -43,10 +43,10 @@ data(penguins)
 ```
 
 ```{r pre_year_colors}
-island_colors <- c("red", "gold", "blue")
+year_colors <- c("red", "gold", "blue")
 data(penguins)
 penguins$year <- factor(penguins$year)
-penguins$plot_color <- island_colors[penguins$year]
+penguins$plot_color <- year_colors[penguins$year]
 ```
 
 ## Populations of Penguins
@@ -75,21 +75,21 @@ This week we learned how to load packages, so that the functions in those packag
 - display the class of the `penguins` data set
 - display the `penguins` data.
 
-```{r load_penguins, exercise=TRUE}
+```{r 01_load_penguins, exercise=TRUE}
 
 ```
 
-```{r load_penguins-solution}
+```{r 01_load_penguins-solution}
 library(palmerpenguins)
 class(penguins)
 penguins
 ```
 
-```{r load_penguins-code-check}
+```{r 01_load_penguins-code-check}
 grade_code()
 ```
 
-```{r table_type_quiz}
+```{r 02_table_type_quiz}
 quiz(
   question(
     "Based on the `class` of the data set, `penguins` is",
@@ -106,15 +106,15 @@ quiz(
 
 One of the best ways to understand what's in a data set is to look the structure summary.  Go ahead and display the structure summary for `penguins`.
 
-```{r str_penguins, exercise=TRUE, exercise.setup = "pre_penguin"}
+```{r 03_str_penguins, exercise=TRUE, exercise.setup = "pre_penguin"}
 
 ```
 
-```{r str_penguins-solution}
+```{r 03_str_penguins-solution}
 str(penguins)
 ```
 
-```{r str_penguins-code-check}
+```{r 03_str_penguins-code-check}
 grade_code()
 ```
 
@@ -132,31 +132,31 @@ Wow!  Lots of duplicates!  Can you:
 - do the same for the `island` column? 
 - and the `year` column?
  
-```{r unique_values, exercise=TRUE, exercise.setup = "pre_penguin"}
+```{r 04_unique_values, exercise=TRUE, exercise.setup = "pre_penguin"}
 
 ```
 
-```{r unique_values-solution}
+```{r 04_unique_values-solution}
 unique(penguins$species)
 unique(penguins$island)
 unique(penguins$year)
 ```
 
-```{r unique_values-code-check}
+```{r 04_unique_values-code-check}
 grade_code()
 ```
 
 Of course, R can make your life easier.  There's a function called `summary` that is pretty handy to summarize almost anything in R.  It can summarize data.frames.  Try passing `penguins` to the summary function:
 
-```{r summary_penguins, exercise=TRUE, exercise.setup = "pre_penguin"}
+```{r 05_summary_penguins, exercise=TRUE, exercise.setup = "pre_penguin"}
 
 ```
 
-```{r summary_penguins-solution}
+```{r 05_summary_penguins-solution}
 summary(penguins)
 ```
 
-```{r summary_penguins-code-check}
+```{r 05_summary_penguins-code-check}
 grade_code()
 ```
 
@@ -166,7 +166,7 @@ Now that we have a sense of what's in the data set, some questions may come to m
 
 Before we start writing R code, let's take a moment and try to think -- conceptually -- about what an answer to this question would look like, so we know here we are headed with our analysis.  In other words, without thinking about R for a moment, try to imagine the characteristics of a data table that would answer the question "*Which species are on which islands?*"
 
-```{r island_quiz}
+```{r 06_island_quiz}
 quiz(
   question(
     "What combination of columns would need to be in a table if that table were to tell us which species are on which islands?",
@@ -251,7 +251,7 @@ Use the internet to search for a function that will return the unique records in
 
 What did you find?
 
-```{r distinct_quiz}
+```{r 07_distinct_quiz}
 quiz(
   question(
     "Which R function will find the unique records a data.frame",
@@ -276,23 +276,23 @@ OK, we've talked about it enough.  Let's do it!
 
 Hint: What package is `distinct()` in again?  Remember, you don't need to load the entire package to use one function.  Use the `::` operator!
 
-```{r distinct_penguin_island, exercise=TRUE, exercise.setup = "pre_penguin"}
+```{r 08_distinct_penguin_island, exercise=TRUE, exercise.setup = "pre_penguin"}
 
 ```
 
-```{r distinct_penguin_island-solution}
+```{r 08_distinct_penguin_island-solution}
 dplyr::distinct (
   penguins[ , c("island", "species")]
 )
 ```
 
-```{r distinct_penguin_island-code-check}
+```{r 08_distinct_penguin_island-code-check}
 grade_code()
 ```
 
 What did you find?
 
-```{r distribution_quiz}
+```{r 09_distribution_quiz}
 quiz(
   question(
     "Which Islands do Chinstrap penguines occur on?",
@@ -329,15 +329,15 @@ Keep in mind:  When we make a plot of "a vs. b", `a` is the dependent variable (
 
 So use the `plot()` function to graph bill length vs. flipper length for the `penguins` data set.
 
-```{r plot_flipper_bill, exercise=TRUE, exercise.setup = "pre_penguin"}
+```{r 10_plot_flipper_bill, exercise=TRUE, exercise.setup = "pre_penguin"}
  
 ```
 
-```{r plot_flipper_bill-solution}
+```{r 10_plot_flipper_bill-solution}
 plot(penguins$flipper_length_mm, penguins$bill_length_mm)
 ```
 
-```{r plot_flipper_bill-code-check}
+```{r 10_plot_flipper_bill-code-check}
 grade_code()
 ```
 
@@ -347,7 +347,7 @@ To do that, first we have to understand what color names are available in R.  Th
 
 Search the internet for a description of the built-in color names in R.
 
-```{r color_quiz} 
+```{r 11_color_quiz} 
 quiz(
   question(
     "Which of the following colors is NOT a built in color name in R?",
@@ -386,16 +386,16 @@ Remember, tho, if we want to alter a data set from a package, we have to make a 
 - Convert the `year` column to a factor.
 - Display the levels of the new factor.
 
-```{r create_years_factor, exercise=TRUE, exercise.setup = "pre_penguin"}
+```{r 12_create_years_factor, exercise=TRUE, exercise.setup = "pre_penguin"}
 ```
 
-```{r create_years_factor-solution}
+```{r 12_create_years_factor-solution}
 data("penguins")
 penguins$year <- factor(penguins$year)
 levels(penguins$year)
 ```
 
-```{r create_years_factor-code-check}
+```{r 12_create_years_factor-code-check}
 grade_code()
 ```
 
@@ -420,7 +420,7 @@ year_colors <- c("red", "gold", "blue")
 year_colors[penguins$year]
 ```
 
-```{r island_color_quiz} 
+```{r 13_island_color_quiz} 
 quiz(
   question(
     "What would the second line of code (above) produce?",
@@ -438,23 +438,23 @@ OK, so we have a way to make a color vector that can be used for the new column 
 - remake the prior plot, but passing the parameter `col = penguins$plot_color`
 
 I've included the `year_color` vector for you.  Add your code *below* the provided code.
-```{r plot_flipper_bill_by_year, exercise=TRUE, exercise.setup = "pre_year_colors"}
+```{r 14_plot_flipper_bill_by_year, exercise=TRUE, exercise.setup = "pre_year_colors"}
 # leave the next line first; add code below the next line
 year_colors <- c("red", "gold", "blue")
 
 ```
 
-```{r plot_flipper_bill_by_year-solution}
+```{r 14_plot_flipper_bill_by_year-solution}
 year_colors <- c("red", "gold", "blue")
 data("penguins")
-penguins$plot_color <- island_colors[penguins$year]
+penguins$plot_color <- year_colors[penguins$year]
 plot(
   penguins$flipper_length_mm,
   penguins$bill_length_mm,
   col = penguins$plot_color)
 ```
 
-```{r plot_flipper_bill_by_year-code-check}
+```{r 14_plot_flipper_bill_by_year-code-check}
 grade_code()
 ```
 
@@ -462,21 +462,21 @@ Hmmmmm...  `Year` doesn't seem to have much to do with the pattern.  All the yea
 
 ## Integration
 
-Let's do a little more exploration to see what's going on.  There won't be any more solutions to look a, tho.  Everything you'll be asked to do will be based on the skills we've learned and so far in this lab, so if you get stuck, it might help to pop back and look at your prior answers to complete the lab.  You'll be graded on the remainder of the lab.
+Let's do a little more exploration to see what's going on.  There won't be any more solutions to look at, tho.  Everything you'll be asked to do will be based on the skills we've learned and so far in this lab, so if you get stuck, it might help to pop back and look at your prior answers to complete the lab.  You'll be graded on the remainder of the lab.
 
 ### Is the `plot_color` vector correct?
 
 First, let's double check that we've got the colors in the `plot_colors` column right!  Create a summary table that shows there is only one `plot_color` associated with each `year`.
 
-```{r colors_correct, exercise=TRUE, exercise.setup = "pre_year_colors"}
+```{r 15_colors_correct, exercise=TRUE, exercise.setup = "pre_year_colors"}
 
 ```
 
-```{r colors_correct-solution, exercise.reveal_solution=FALSE}
+```{r 15_colors_correct-solution, exercise.reveal_solution=FALSE}
 dplyr::distinct(penguins[, c("year", "plot_color")])
 ```
 
-```{r colors_correct-check}
+```{r 15_colors_correct-check}
 grade_this( {
   pass_if(
     TRUE,
@@ -489,11 +489,11 @@ grade_this( {
 - Create the summary table that shows that each island is associated with only one color.  
 - Then plot bill length vs. flipper length again, but this time with the different colors representing different islands.
 
-```{r plot_flipper_bill_by_island, exercise=TRUE, exercise.setup = "pre_year_colors"}
+```{r 16_plot_flipper_bill_by_island, exercise=TRUE, exercise.setup = "pre_year_colors"}
 
 ```
 
-```{r plot_flipper_bill_by_island-solution, exercise.reveal_solution=FALSE}
+```{r 16_plot_flipper_bill_by_island-solution, exercise.reveal_solution=FALSE}
 island_colors = c("red", "gold", "blue")
 penguins$plot_color <- island_colors[penguins$island]
 dplyr::distinct(penguins[, c("island", "plot_color")])
@@ -503,7 +503,7 @@ plot(
   col = penguins$plot_color)
 ```
 
-```{r plot_flipper_bill_by_island-check}
+```{r 16_plot_flipper_bill_by_island-check}
 grade_this( {
   pass_if(
     TRUE,
@@ -521,15 +521,15 @@ Let's Repeat the last question, but make the colors represent different species.
 
 - Recreate the `plot_color` column so that... *Pay attention, now...* Gentoo penguins are "red" dots, Adelies are "gold" dots, and Chinstraps are "blue".  *Got it?*  
 - Create the summary table that shows that each island is associated with only one color.  *Make sure you have the colors right before you make the graph!*
-- Then plot bill length vs. flipper length again, but this time with the different colors representing different islands.
+- Then plot bill length vs. flipper length again, but this time with the different colors representing different species.
 
 
 
-```{r plot_flipper_bill_by_species, exercise=TRUE, exercise.setup = "pre_year_colors"}
+```{r 17_plot_flipper_bill_by_species, exercise=TRUE, exercise.setup = "pre_year_colors"}
 
 ```
 
-```{r plot_flipper_bill_by_species-solution, exercise.reveal_solution=FALSE}
+```{r 17_plot_flipper_bill_by_species-solution, exercise.reveal_solution=FALSE}
 species_colors <- c("gold", "blue", "red")
 penguins$plot_color <- species_colors[penguins$species]
 dplyr::distinct(penguins[, c("species", "plot_color")])
@@ -539,25 +539,25 @@ plot(
   col = penguins$plot_color)
 ```
 
-```{r plot_flipper_bill_by_species-check}
+```{r 17_plot_flipper_bill_by_species-check}
 grade_this( {
   pass_if(
     TRUE,
     message = "Your solution has been submitted for grading.") })
 ```
 
-```{r interpretation_quiz}
+```{r 18_interpretation_quiz}
 quiz(
   question_text(
-    "What do you conclude at the relationship between flipper length and bill length *within* each species?",
+    "What do you conclude about the relationship between flipper length and bill length *within* each species?",
     answer_fn(tutorialize::submitToTA),
     rows = 2,
-    correct = "Thanks. The TA will evaluate your answer.  A correct answer would be something like 'Within each species, the bill length is positively correlated with flipper length and the slope of the relationship is similar regardless of species.'"),
+    correct = "Thanks. The TA will evaluate your answer.  One possible correct answer would be something like 'Within each species, the bill length is positively correlated with flipper length and the slope of the relationship is similar regardless of species.'"),
   question_text(
     "What do you conclude at the relationship between flipper length and bill length when you compare *across* the different species?",
     answer_fn(tutorialize::submitToTA),
     rows = 4,
-    correct = "Thanks. The TA will evaluate your answer.  A correct answer would be something like 'Adelie and Chinstrap penguins have roughly the same range of flipper length, but Chinstraps have overall, longer bills that Adelies.  Gentoos have longer flippers than the other two species, but the range in bill length is similar to Chinstraps.  The ratio of flipper length to bill length is similar for Adelie and Gentoo penguins'"),
+    correct = "Thanks. The TA will evaluate your answer.  A correct answer might include observations such as 'Adelie and Chinstrap penguins have roughly the same range of flipper length, but Chinstraps have overall, longer bills that Adelies.  Gentoos have longer flippers than the other two species, but the range in bill length is similar to Chinstraps.  The ratio of flipper length to bill length is similar for Adelie and Gentoo penguins'"),
   question_text(
     "What do you conclude from the fact that `island` seemed to explain some of the variance in the relationship between flipper length bill length?  Does the something about the islands themselves affect this relationship?",
     answer_fn(tutorialize::submitToTA),
@@ -565,5 +565,7 @@ quiz(
     correct = "Thanks. The TA will evaluate your answer.  A correct answer would be something like 'No.  The uneven distribution of spcecies across islands drove the pattern in the graph where color represented island.  Chinstraps are only on Dream Island, and Gentoos are only on Biscoe Island, so species drove a segregation of colors for those islands.  Adelie penguins are on all of the islands, explaining the overlap in island colors in the lower left part of the graph where data were colored by island.'")
 )  
 ```
+
+## Well done!
 
 Nice work.  You are done with Lab 4!
