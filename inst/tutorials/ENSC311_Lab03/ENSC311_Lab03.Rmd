@@ -231,7 +231,7 @@ In order to center the histogram cells above each number on the x axis, the `bre
 In the sandbox below...
 
 - Copy your code from the prior exercise and paste it below.
-- Use `seq()` to create this sequence of break values described above and pass that sequence to the appropriate `breaks` parameter in `hist()`.
+- Use `seq()` to create this sequence of break values described above and pass that sequence to the `breaks` parameter in `hist()`.
 
 ```{r 04_roll_the_dice_50_breaks, exercise=TRUE}
 
@@ -336,6 +336,7 @@ hypotenuse <- function(a, b) {
 }
 
 hypotenuse(a = ____, b = ____)
+
 ```
 
 ```{r 07_hypotenuse-solution}
@@ -373,6 +374,7 @@ roll_die <- function(n, sides = 6) {
 
 # test your function with this line of code
 roll_die(n = 20)
+
 ```
 
 ```{r 08_roll_die-solution}
